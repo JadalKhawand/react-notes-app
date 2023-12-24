@@ -1,31 +1,14 @@
-import React from 'react'
-import Note from './Note'
+import React from 'react';
+import Note from "./Note";
 
-function NotesList() {
-
-  const notes = [
-    {id: 1,
-       content: 'By groceries',
-       author:{
-      username: 'jad',
-      profile:'./profile.png'
-    }},
-    {id: 2,
-       content: 'Second note',
-       author:{
-      username: 'jad',
-      profile:'./profile.png'
-    }},
-  ]
-
-
+function NotesList({ notes, deleteNote, editNote }: { notes: Array<any>; deleteNote: Function; editNote: Function }) {
   return (
-    <div className='NotesList'>
-      {notes.map((note) => {
-        return <Note note={note}/>
-      })}
+    <div style={{ width: '450px', height: '600px' }} className="NotesList flex flex-col gap-4 bg-white p-10 rounded-3xl shadow-xl overflow-y-auto">
+      {notes.map((note) => (
+        <Note key={note.id} note={note} deleteNote={deleteNote} editNote={editNote} />
+      ))}
     </div>
-  )
+  );
 }
 
-export default NotesList
+export default NotesList;
